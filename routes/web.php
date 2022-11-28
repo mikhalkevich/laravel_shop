@@ -24,9 +24,10 @@ Route::get('catalogs', [Controllers\CatalogController::class, 'getIndex'])->name
 Route::get('catalog/{catalog}', [Controllers\CatalogController::class, 'getOne'])->name('catalog');
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::prefix('dashboard')->middleware(['auth', 'verified'])->controller(Controllers\HomeController::class)->group(function(){
+    Route::get('/', 'getIndex')->name('dashboard');
+    Route::post('/', 'postIndex');
+});
 
 require __DIR__.'/auth.php';
 
