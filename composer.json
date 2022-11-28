@@ -13,6 +13,7 @@
         "laravel/tinker": "^2.7",
         "mll-lab/laravel-graphiql": "^1.0",
         "mll-lab/laravel-graphql-playground": "^2.6",
+        "munafio/chatify": "^1.5",
         "nuwave/lighthouse": "^5.60",
         "rebing/graphql-laravel": "^8.3",
         "spatie/laravel-medialibrary": "^10.0.0",

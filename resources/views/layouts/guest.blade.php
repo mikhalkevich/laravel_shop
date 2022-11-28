@@ -18,6 +18,65 @@
     <main>
         {{ $slot }}
     </main>
+    <footer>
+        <div class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <div class="footer-logo">
+                                    <h2><span>e</span>Business</h2>
+                                </div>
+                                <p>
+                                    {!! $main_info->body !!}
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>information</h4>
+                                <div class="footer-contacts">
+                                    {!! $about_company->body !!}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- end single footer -->
+                    <div class="col-md-4">
+                        <div class="footer-content">
+                            <div class="footer-head">
+                                <h4>Links</h4>
+                                @foreach($mains as $main)
+                                    <p><a id="{{$main->id}}" href="{{asset($main->url)}}">{{$main->name}}</a></p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-area-bottom">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-12 col-xs-12">
+                        <div class="copyright text-center">
+                            <p>
+                                © Copyright <strong>eBusiness</strong>. All Rights Reserved
+                            </p>
+                        </div>
+                        <div class="credits">
+                            Developed by <a href="https://github.com/mikhalkevich/">Mikhalkevich</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 </div>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

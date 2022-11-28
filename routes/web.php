@@ -22,8 +22,30 @@ Route::get('catalog_add_product/{catalog}', [Controllers\CatalogController::clas
 Route::get('catalog_delete_product/{catalog}', [Controllers\CatalogController::class, 'detachProduct']);
 Route::get('catalogs', [Controllers\CatalogController::class, 'getIndex'])->name('catalogs');
 Route::get('catalog/{catalog}', [Controllers\CatalogController::class, 'getOne'])->name('catalog');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 require __DIR__.'/auth.php';
+
+//for admin
+Route::prefix('adminka')->middleware('admin')->group(function(){
+    Route::get('/', [Controllers\OrderController::class, 'getAll'])->name('adminka');
+    //maintext
+    Route::controller(Controllers\MaintextController::class)->group(function () {
+        Route::get('maintext', 'getAll');
+        Route::get('maintext/{maintext}', 'getEdit');
+        Route::post('maintext/{maintext}', 'postUpdate');
+    });
+    //orders
+    Route::controller(Controllers\OrderController::class)->group(function(){
+        Route::get('orders', 'getAll');
+        Route::get('order/{order}', 'getEdit');
+        Route::post('order/{order}', 'postUpdate');
+    });
+});
+
+//ended routers
+Route::get('{url}', [Controllers\MaintextController::class, 'getUrl']);

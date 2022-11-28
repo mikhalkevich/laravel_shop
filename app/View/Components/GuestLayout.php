@@ -3,6 +3,7 @@
 namespace App\View\Components;
 
 use Illuminate\View\Component;
+use App\Models\Maintext;
 
 class GuestLayout extends Component
 {
@@ -13,6 +14,9 @@ class GuestLayout extends Component
      */
     public function render()
     {
-        return view('layouts.guest');
+        $about_company = Maintext::where('status', 'main_about')->first();
+        $main_info = Maintext::where('status', 'main_info')->first();
+        $mains = Maintext::where('status', 'main')->get();
+        return view('layouts.guest', compact('mains', 'main_info', 'about_company'));
     }
 }

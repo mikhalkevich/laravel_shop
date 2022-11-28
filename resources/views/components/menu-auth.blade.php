@@ -13,6 +13,19 @@
 
     <x-slot name="content">
         <!-- Authentication -->
+
+        <x-dropdown-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            {{ __('Dashboard') }}
+        </x-dropdown-link>
+        @auth
+            @if(Auth::user()->is_admin)
+                <x-dropdown-link :href="route('adminka')" :active="request()->routeIs('adminka')">
+                    Adminka
+                </x-dropdown-link>
+            @endif
+        @elseauth
+
+        @endauth
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 
